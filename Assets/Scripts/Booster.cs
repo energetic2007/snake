@@ -14,7 +14,7 @@ public class Booster : MonoBehaviour
     {
 
 
-        InvokeRepeating("Spawn", 2, 1);
+        Spawn();
     }
     // public void SpawnObject()
     // {
@@ -46,16 +46,25 @@ public class Booster : MonoBehaviour
 
 
         this.transform.position = new Vector3(Mathf.Round(x), Mathf.Round(y), 0.0f);
-        StartCoroutine(DelayAction(4.0f));
+        StartCoroutine(DelayAction());
+
     }
 
-    IEnumerator DelayAction(float delayTime)
+    IEnumerator DelayAction()
     {
         _renderer.enabled = false;
-        yield return new WaitForSeconds(delayTime);
+        yield return new WaitForSeconds(1f);
         _renderer.enabled = true;
+        yield return new WaitForSeconds(1f);
+        Spawn();
     }
-
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Player" || other.tag == "Obstacle")
+        {
+            Spawn();
+        }
+    }
     /*
 
      public BoxCollider2D gridArea;
