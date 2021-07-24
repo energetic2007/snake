@@ -12,8 +12,6 @@ public class Booster : MonoBehaviour
 
     private void Start()
     {
-
-
         Spawn();
     }
     // public void SpawnObject()
@@ -35,16 +33,10 @@ public class Booster : MonoBehaviour
     // }
     private void Spawn()
     {
-        //    StartCoroutine(Yield());
-
         Bounds bounds = this.gridArea.bounds;
-
 
         float x = Random.Range(bounds.min.x, bounds.max.x);
         float y = Random.Range(bounds.min.y, bounds.max.y);
-
-
-
         this.transform.position = new Vector3(Mathf.Round(x), Mathf.Round(y), 0.0f);
         StartCoroutine(DelayAction());
 
