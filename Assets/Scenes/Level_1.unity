@@ -491,7 +491,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   segmentPrefab: {fileID: 9038876160059583269, guid: fbc89d37fd6eee84cb92715f56820768,
     type: 3}
-  joystick: {fileID: 1549216878}
 --- !u!50 &232268796
 Rigidbody2D:
   serializedVersion: 4
@@ -3218,18 +3217,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1379424144}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1549216878 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2929252283123773951, guid: aaa2c939c0359ac4dbce3f49e8b90252,
-    type: 3}
-  m_PrefabInstance: {fileID: 1379424144}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45977bbae16431c46a013576a1aea384, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1583727141
 GameObject:
   m_ObjectHideFlags: 0
@@ -3395,8 +3382,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: {fileID: 1346976001}
+  highScore: {fileID: 0}
   gridArea: {fileID: 1924301030}
   scoreCount: 0
+  highScoreCount: 0
+  innerWalls: {fileID: 1068420529}
 --- !u!212 &1747904027
 SpriteRenderer:
   m_ObjectHideFlags: 0

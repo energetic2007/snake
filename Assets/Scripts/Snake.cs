@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Snake : MonoBehaviour
 {
@@ -9,6 +10,16 @@ public class Snake : MonoBehaviour
     private List<Transform> _segments;
     public Transform segmentPrefab;
     private int boost = 0;
+
+    private int scoreCount = 0;
+    private int highScoreCount;
+    public static Snake instance;
+    [SerializeField] private Text score, highScore;
+    private void Awake()
+    {
+        instance = this;
+    }
+
 
 
 
@@ -103,8 +114,10 @@ public class Snake : MonoBehaviour
 
         _segments.Clear();
         _segments.Add(this.transform);
+        ResetScore();
 
         this.transform.position = Vector3.zero;
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -112,6 +125,8 @@ public class Snake : MonoBehaviour
         if (other.tag == "Food")
         {
             Grow();
+            AddScore();
+            score.text = "Score: " + scoreCount.ToString() + " points";
         }
         else if (other.tag == "Obstacle")
         {
@@ -120,6 +135,8 @@ public class Snake : MonoBehaviour
         else if (other.tag == "Boost")
         {
             Grow();
+            AddScore();
+            score.text = "Score: " + scoreCount.ToString() + " points";
             StartCoroutine(SnakeSpeed());
         }
         IEnumerator SnakeSpeed()
@@ -129,5 +146,21 @@ public class Snake : MonoBehaviour
             yield return new WaitForSeconds(7f);
             boost = 0;
         }
+
+    }
+    private void AddScore()
+    {
+        scoreCount++;
+    }
+    private void AddHighScore()
+    {
+        if (scoreCount > highScoreCount)
+        {
+            highScoreCount = scoreCount;
+        }
+    }
+    private void ResetScore()
+    {
+        scoreCount = 0;
     }
 }

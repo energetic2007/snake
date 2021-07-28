@@ -45,9 +45,9 @@ public class Booster : MonoBehaviour
     IEnumerator DelayAction()
     {
         _renderer.enabled = false;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(20f);
         _renderer.enabled = true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(10f);
         Spawn();
     }
     private void OnTriggerEnter2D(Collider2D other)
