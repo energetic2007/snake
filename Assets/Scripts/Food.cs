@@ -5,22 +5,9 @@ using UnityEngine.UI;
 
 public class Food : MonoBehaviour
 {
-    //public Text score, highScore;
-
     public BoxCollider2D gridArea;
-    //public int scoreCount = 0;
-    //public int highScoreCount;
     private Vector3 pos;
-
     [SerializeField] GameObject innerWalls;
-
-    //public static Food instance;
-
-
-    // private void Awake()
-    // {
-    //    instance = this;
-    //}
 
     private void Start()
     {
@@ -53,26 +40,6 @@ public class Food : MonoBehaviour
         if (other.tag == "Player")
         {
             RandomizePosition();
-            //AddScore();
-            // score.text = "Score: " + scoreCount.ToString() + " points";
-
         }
     }
-    /*
-    public void AddScore()
-    {
-        scoreCount++;
-    }
-    public void AddHighScore()
-    {
-        if (scoreCount > highScoreCount)
-        {
-            highScoreCount = scoreCount;
-        }
-    }
-    public void ResetScore()
-    {
-        scoreCount = 0;
-    }
-    */
 }

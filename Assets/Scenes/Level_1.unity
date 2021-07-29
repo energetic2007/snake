@@ -277,6 +277,7 @@ MonoBehaviour:
   spawnDelay: 1
   gridArea: {fileID: 1924301030}
   _renderer: {fileID: 26513766}
+  innerWalls: {fileID: 1068420529}
 --- !u!212 &26513766 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3285386526922647564, guid: e403247bd9a732047957e27231385630,
@@ -491,6 +492,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   segmentPrefab: {fileID: 9038876160059583269, guid: fbc89d37fd6eee84cb92715f56820768,
     type: 3}
+  score: {fileID: 1346976001}
+  highScore: {fileID: 0}
 --- !u!50 &232268796
 Rigidbody2D:
   serializedVersion: 4
@@ -974,7 +977,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1029594303}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.932999, y: -64.72737, z: -666.8991}
+  m_LocalPosition: {x: 11.932999, y: -189, z: -666.8991}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 15917317}
@@ -2476,7 +2479,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -25, y: 178.86002}
+  m_AnchoredPosition: {x: -103, y: 349}
   m_SizeDelta: {x: 160, y: 44.28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1346976001
@@ -3252,9 +3255,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 91.5, y: 188.5}
+  m_AnchoredPosition: {x: 209, y: 471}
   m_SizeDelta: {x: 40.5, y: 40}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1.9166718, y: 3.7130127}
 --- !u!114 &1583727143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3381,11 +3384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4c2331ec56ca7f4db25c141e10fc053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: {fileID: 1346976001}
-  highScore: {fileID: 0}
   gridArea: {fileID: 1924301030}
-  scoreCount: 0
-  highScoreCount: 0
   innerWalls: {fileID: 1068420529}
 --- !u!212 &1747904027
 SpriteRenderer:

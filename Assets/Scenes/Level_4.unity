@@ -2075,6 +2075,7 @@ MonoBehaviour:
   spawnDelay: 1
   gridArea: {fileID: 1161614334}
   _renderer: {fileID: 757951622}
+  innerWalls: {fileID: 361137333}
 --- !u!1 &786511866
 GameObject:
   m_ObjectHideFlags: 0
@@ -3667,10 +3668,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4c2331ec56ca7f4db25c141e10fc053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: {fileID: 721654845}
   gridArea: {fileID: 1161614334}
-  scoreCount: 0
-  innerWalls: {fileID: 0}
+  innerWalls: {fileID: 1003490557}
 --- !u!212 &1003490560
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4290,6 +4289,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   segmentPrefab: {fileID: 9038876160059583269, guid: fbc89d37fd6eee84cb92715f56820768,
     type: 3}
+  score: {fileID: 0}
+  highScore: {fileID: 0}
 --- !u!50 &1365266097
 Rigidbody2D:
   serializedVersion: 4

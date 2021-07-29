@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Snake : MonoBehaviour
 {
@@ -20,62 +21,35 @@ public class Snake : MonoBehaviour
         instance = this;
     }
 
-
-
-
     private void Start()
     {
         _segments = new List<Transform>();
+
         _segments.Add(this.transform);
     }
 
     public void Up()
     {
         if (_direction != Vector2.down)
-
             _direction = Vector2.up;
     }
 
     public void Down()
     {
         if (_direction != Vector2.up)
-
             _direction = Vector2.down;
     }
     public void Right()
     {
         if (_direction != Vector2.left)
-
             _direction = Vector2.right;
     }
     public void Left()
     {
         if (_direction != Vector2.right)
-
             _direction = Vector2.left;
     }
 
-    /*  private void Update()
-      {
-
-          if (Input.GetKeyDown(KeyCode.UpArrow) && _direction != Vector2.down)
-          {
-              _direction = Vector2.up;
-          }
-          else if (Input.GetKeyDown(KeyCode.DownArrow) && _direction != Vector2.up)
-          {
-              _direction = Vector2.down;
-          }
-          else if (Input.GetKeyDown(KeyCode.LeftArrow) && _direction != Vector2.right)
-          {
-              _direction = Vector2.left;
-          }
-          else if (Input.GetKeyDown(KeyCode.RightArrow) && _direction != Vector2.left)
-          {
-              _direction = Vector2.right;
-          }
-      }
-  */
     private void FixedUpdate()
     {
         if (boost == 0)
@@ -105,37 +79,22 @@ public class Snake : MonoBehaviour
         _segments.Add(segment);
     }
 
-    private void ResetState()
-    {
-        for (int i = 1; i < _segments.Count; i++)
-        {
-            Destroy(_segments[i].gameObject);
-        }
-
-        _segments.Clear();
-        _segments.Add(this.transform);
-        ResetScore();
-
-        this.transform.position = Vector3.zero;
-
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Food")
         {
             Grow();
-            AddScore();
+            scoreCount++;
             score.text = "Score: " + scoreCount.ToString() + " points";
         }
         else if (other.tag == "Obstacle")
         {
-            ResetState();
+            Reset();
         }
         else if (other.tag == "Boost")
         {
             Grow();
-            AddScore();
+            scoreCount++;
             score.text = "Score: " + scoreCount.ToString() + " points";
             StartCoroutine(SnakeSpeed());
         }
@@ -148,10 +107,6 @@ public class Snake : MonoBehaviour
         }
 
     }
-    private void AddScore()
-    {
-        scoreCount++;
-    }
     private void AddHighScore()
     {
         if (scoreCount > highScoreCount)
@@ -159,8 +114,9 @@ public class Snake : MonoBehaviour
             highScoreCount = scoreCount;
         }
     }
-    private void ResetScore()
+    private void Reset()
     {
         scoreCount = 0;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
