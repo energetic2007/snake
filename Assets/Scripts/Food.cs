@@ -1,25 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Food : MonoBehaviour
 {
-    public BoxCollider2D gridArea;
-    private Vector3 pos;
     [SerializeField] GameObject innerWalls;
-
+    [SerializeField] BoxCollider2D gridArea;
     private void Start()
     {
-        RandomizePosition();
+        Spawn();
     }
-    private void RandomizePosition()
+    public void Spawn()
     {
         Bounds bounds = this.gridArea.bounds;
-
-        pos.x = Random.Range(bounds.min.x, bounds.max.x);
-        pos.y = Random.Range(bounds.min.y, bounds.max.y);
-        this.transform.position = new Vector3(Mathf.Round(pos.x), Mathf.Round(pos.y), 0.0f);
+        float x = Random.Range(bounds.min.x, bounds.max.x);
+        float y = Random.Range(bounds.min.y, bounds.max.y);
+        this.transform.position = new Vector3(Mathf.Round(x), Mathf.Round(y), 0.0f);
 
         BoxCollider2D[] colliders = innerWalls.GetComponentsInChildren<BoxCollider2D>();
 
@@ -27,19 +23,13 @@ public class Food : MonoBehaviour
         {
             if (colliders[i].bounds.Contains(this.transform.position))
             {
-                RandomizePosition();
+                Spawn();
             }
         }
     }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("I have collided with smth. It is: ");
-        Debug.Log(other.tag);
-
         if (other.tag == "Player")
-        {
-            RandomizePosition();
-        }
+            Spawn();
     }
 }
