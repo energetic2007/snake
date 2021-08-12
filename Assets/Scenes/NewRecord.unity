@@ -208,7 +208,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2034049354}
         m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
-        m_MethodName: RunCurrScene
+        m_MethodName: LoadPreviousScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -863,11 +863,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2034049349}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dedc460ea1357548819f93c50004634, type: 3}
+  m_Script: {fileID: 11500000, guid: 00bd29fab166146cbbb9fea2aca0ad0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  segmentPrefab: {fileID: 0}
-  score: {fileID: 0}
   highScore: {fileID: 860104430}
 --- !u!114 &2034049354
 MonoBehaviour:

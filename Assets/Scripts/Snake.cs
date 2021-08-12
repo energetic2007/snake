@@ -9,27 +9,20 @@ public class Snake : MonoBehaviour
     private Vector2 _direction = Vector2.right;
 
     private List<Transform> _segments;
-    public Transform segmentPrefab;
+    [SerializeField] Transform segmentPrefab;
     private int boost = 0;
 
     private int scoreCount = 0;
-    private int highScoreCount;
     public static Snake instance;
-    [SerializeField] private Text score, highScore;
+    [SerializeField] private Text score;
     private void Awake()
     {
         instance = this;
-        if (PlayerPrefs.HasKey("SaveScore"))
-        {
-            highScoreCount = PlayerPrefs.GetInt("SaveScore");
-            highScore.text = highScoreCount.ToString() + " points";
-        }
     }
 
     private void Start()
     {
         _segments = new List<Transform>();
-
         _segments.Add(this.transform);
     }
 
@@ -86,23 +79,19 @@ public class Snake : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Food")
+        if (other.tag == "Food" || other.tag == "Boost")
         {
             Grow();
             scoreCount++;
-            AddHighScore();
+            Score.AddHighScore(scoreCount);
             score.text = "Score: " + scoreCount.ToString() + " points";
         }
-        else if (other.tag == "Obstacle")
+        if (other.tag == "Obstacle")
         {
             Reset();
         }
-        else if (other.tag == "Boost")
+        if (other.tag == "Boost")
         {
-            Grow();
-            scoreCount++;
-            AddHighScore();
-            score.text = "Score: " + scoreCount.ToString() + " points";
             StartCoroutine(SnakeSpeed());
         }
         IEnumerator SnakeSpeed()
@@ -114,20 +103,12 @@ public class Snake : MonoBehaviour
         }
 
     }
-    private void AddHighScore()
-    {
-        if (scoreCount > highScoreCount)
-        {
-            highScoreCount = scoreCount;
-            PlayerPrefs.SetInt("SaveScore", highScoreCount);
-        }
-    }
     private void Reset()
     {
-        if (scoreCount == highScoreCount)
+        if (Score.AddHighScore(scoreCount))
         {
             SceneManager.LoadScene("NewRecord");
-            SceneController.sceneIndex = SceneManager.GetActiveScene().buildIndex;
+            SceneController.previousSceneIndex = SceneManager.GetActiveScene().buildIndex;
             return;
         }
         scoreCount = 0;
