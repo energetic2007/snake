@@ -10,8 +10,6 @@ public class Snake : MonoBehaviour
 
     private List<Transform> _segments;
     [SerializeField] Transform segmentPrefab;
-    private int boost = 0;
-
     private int scoreCount = 0;
     public static Snake instance;
     [SerializeField] private Text score;
@@ -50,18 +48,10 @@ public class Snake : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (boost == 0)
-            Time.fixedDeltaTime = 0.3f;
-        else if (boost == 1)
-            Time.fixedDeltaTime = 0.1f;
-        else if (boost == 2)
-            Time.fixedDeltaTime = 0.5f;
-
         for (int i = _segments.Count - 1; i > 0; i--)
         {
             _segments[i].position = _segments[i - 1].position;
         }
-
         this.transform.position = new Vector3(
             Mathf.Round(this.transform.position.x) + _direction.x,
             Mathf.Round(this.transform.position.y) + _direction.y,
@@ -90,18 +80,6 @@ public class Snake : MonoBehaviour
         {
             Reset();
         }
-        if (other.tag == "Boost")
-        {
-            StartCoroutine(SnakeSpeed());
-        }
-        IEnumerator SnakeSpeed()
-        {
-            int rand = Random.Range(1, 2);
-            boost = rand;
-            yield return new WaitForSeconds(7f);
-            boost = 0;
-        }
-
     }
     private void Reset()
     {
