@@ -143,9 +143,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   innerWalls: {fileID: 1068420529}
   gridArea: {fileID: 1924301030}
-  spawnTime: 3
-  spawnDelay: 1
+  spawnTime: 10
+  spawnDelay: 20
   _renderer: {fileID: 26513766}
+  anim: {fileID: 26513764}
+--- !u!95 &26513764 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1242006558688935691, guid: e403247bd9a732047957e27231385630,
+    type: 3}
+  m_PrefabInstance: {fileID: 6858272515411672423}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &26513766 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3285386526922647564, guid: e403247bd9a732047957e27231385630,
