@@ -348,6 +348,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7219042461165507045, guid: 5d836d42a8407457fbdcf914d4e67399,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1175431722}
+    - target: {fileID: 7219042461165507045, guid: 5d836d42a8407457fbdcf914d4e67399,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Pause
+      objectReference: {fileID: 0}
     - target: {fileID: 7219042461280333849, guid: 5d836d42a8407457fbdcf914d4e67399,
         type: 3}
       propertyPath: m_Name
@@ -462,6 +472,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7219042461359343118, guid: 5d836d42a8407457fbdcf914d4e67399,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1175431722}
+    - target: {fileID: 7219042461359343118, guid: 5d836d42a8407457fbdcf914d4e67399,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Select
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d836d42a8407457fbdcf914d4e67399, type: 3}
@@ -1651,9 +1671,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   innerWalls: {fileID: 361137333}
   gridArea: {fileID: 1161614334}
-  spawnTime: 3
-  spawnDelay: 1
+  spawnTime: 10
+  spawnDelay: 20
   _renderer: {fileID: 757951622}
+  anim: {fileID: 757951624}
+--- !u!95 &757951624 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1242006558688935691, guid: e403247bd9a732047957e27231385630,
+    type: 3}
+  m_PrefabInstance: {fileID: 757951620}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &786511866
 GameObject:
   m_ObjectHideFlags: 0
@@ -2147,7 +2174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4c2331ec56ca7f4db25c141e10fc053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  innerWalls: {fileID: 1003490557}
+  innerWalls: {fileID: 361137333}
   gridArea: {fileID: 1161614334}
 --- !u!212 &1003490560
 SpriteRenderer:

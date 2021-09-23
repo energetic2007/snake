@@ -9,25 +9,10 @@ public class Booster : Food
     [SerializeField] float spawnDelay;
     [SerializeField] Renderer _renderer;
     [SerializeField] private Animator anim;
-    private int i;
     private void Start()
     {
 
         StartCoroutine("SpawnWithDelay");
-        SnakeSpeed();
-    }
-    private void SnakeSpeed()
-    {
-        if (i == 0)
-            Time.timeScale = 1f;
-        else if (i == 1)
-        {
-            Time.timeScale = 0.5f;
-        }
-        else if (i == 2)
-        {
-            Time.timeScale = 1.5f;
-        }
     }
     IEnumerator SpawnWithDelay()
     {
@@ -42,10 +27,9 @@ public class Booster : Food
     }
     IEnumerator Rand()
     {
-        var rand = Random.Range(1, 2);
-        i = rand;
+        Time.timeScale = Mathf.Floor((Random.Range(1, 3))) - 0.5f;
         yield return new WaitForSecondsRealtime(7f);
-        i = 0;
+        Time.timeScale = 1;
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
